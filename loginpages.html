@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+	  background-image:url("sriyanka.JPG");
+    }
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      margin-top: 100px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <input type="submit" value="Login">
+    </form>
+
+    <div class="signup-link">
+      Don't have an account? <a href="file:///C:/Users/agnip/OneDrive/Desktop/final%20project%20Folder/signup%20pages.html">Sign up</a>
+    </div>
+  </div>
+  <script>
+   document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevents the form from submitting normally
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  if (username.trim() === "") {
+    alert("Username cannot be empty.");
+  } else if (password.trim() === "") {
+    alert("Password cannot be empty.");
+  } else if (password.length < 8) {
+    alert("Password must be at least 8 characters long.");
+  } else {
+    window.open("file:///C:/Users/agnip/OneDrive/Desktop/final%20project%20Folder/flightbooking.html", "_blank");
+  }
+});
+  </script>
+</body>
+</html>

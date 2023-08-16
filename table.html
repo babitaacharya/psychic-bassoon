@@ -1,0 +1,42 @@
+<!-- Display search results -->
+<div id="searchResults"></div>
+
+<script>
+    document.getElementById("flightForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Perform form validation
+        var origin = document.getElementsByName("origin")[0].value;
+        var destination = document.getElementsByName("destination")[0].value;
+        var departure = document.getElementsByName("departure")[0].value;
+        var adult = document.getElementsByName("adult")[0].value;
+        var child = document.getElementsByName("child")[0].value;
+
+        if (origin === "" || destination === "" || departure === "" || adult === "" || child === "") {
+            alert("Please fill in all the required fields.");
+            return;
+        }
+
+        // Perform search or make API request to fetch flight data based on the form inputs
+        // In this example, I'm using sample data
+        var flightData = [
+            { flightNumber: "ABC123", time: "10:00 AM", price: "$200" },
+            { flightNumber: "DEF456", time: "2:30 PM", price: "$250" }
+            // Add more flight data objects as needed
+        ];
+
+        // Build the table dynamically
+        var tableHTML = "<h2>Search Results</h2><table><thead><tr><th>Flight Number</th><th>Time</th><th>Price</th></tr></thead><tbody>";
+
+        for (var i = 0; i < flightData.length; i++) {
+            var flight = flightData[i];
+            tableHTML += "<tr><td>" + flight.flightNumber + "</td><td>" + flight.time + "</td><td>" + flight.price + "</td></tr>";
+        }
+
+        tableHTML += "</tbody></table>";
+
+        // Display the table in the searchResults div
+        var searchResults = document.getElementById("searchResults");
+        searchResults.innerHTML = tableHTML;
+    });
+</script>

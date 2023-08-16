@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-image:url("prinsa.JPG");
+  color:lightblue;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+   input[type="text"],
+input[type="email"],
+input[type="password"]
+ {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+.error{
+color:black;
+}
+  
+	</style>
+</head>
+<body>
+  <h1>signup Form</h1>
+  <form id="registrationForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <span id="nameError" class="error"></span><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <span id="emailError" class="error"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <span id="passwordError" class="error"></span><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" required>
+    <span id="confirmPasswordError" class="error"></span><br>
+
+    <button type="submit">Register</button>
+	</div>
+  </form>
+
+         <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Clear previous errors
+      clearErrors();
+
+      // Validate fields
+      var name = document.getElementById("name").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var password = document.getElementById("password").value.trim();
+      var confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      var isValid = true;
+
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required";
+        isValid = false;
+      }
+
+      if (email === "") {
+        document.getElementById("emailError").textContent = "Email is required";
+        isValid = false;
+      } else if (!validateEmail(email)) {
+        document.getElementById("emailError").textContent = "Invalid email address";
+        isValid = false;
+      }
+
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Password is required";
+        isValid = false;
+      }
+
+      if (confirmPassword === "") {
+        document.getElementById("confirmPasswordError").textContent = "Confirm Password is required";
+        isValid = false;
+      } else if (password !== confirmPassword) {
+        document.getElementById("confirmPasswordError").textContent = "Passwords do not match";
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Redirect to login page
+        window.location.href = "loginpages.html";
+      }
+    });
+
+    function validateEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function clearErrors() {
+      var errorElements = document.getElementsByClassName("error");
+      for (var i = 0; i < errorElements.length; i++) {
+        errorElements[i].textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>
